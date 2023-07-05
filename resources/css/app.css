@@ -1,3 +1,20 @@
+.container {
+    width: max-content;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+    row-gap: 20px;
+}
+
+.result {
+    grid-column: 1 / span 2;
+}
+.result label {
+    font-size: 18px;
+    font-weight: bold;
+    cursor: copy;
+}
+
 .last-shorts {
     margin-top: 20px;
     width: max-content;

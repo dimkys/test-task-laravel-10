@@ -1,5 +1,6 @@
 const input = document.getElementById('link');
 const button = document.getElementById('submit');
+const resultLabel = document.getElementById('result');
 
 const postTarget = button.dataset.target;
 const fetchTarget = button.dataset.lastShorts;
@@ -33,6 +34,15 @@ button.addEventListener('click', () => {
             if (response.status === 200) {
                 updateList();
                 input.value = '';
+                try {
+                    response.json().then((data) => {
+                        if (data.short) {
+                            resultLabel.innerText = data.short;
+                        }
+                    });
+                } catch (e) {
+                    alert('All broken(');
+                }
             } else if (response.status === 400) {
                 try {
                     response.json().then((data) => {
@@ -46,5 +56,14 @@ button.addEventListener('click', () => {
                 button.disabled = false;
             }
         });
+    }
+});
+
+resultLabel.addEventListener('click', () => {
+    try {
+        navigator.clipboard.writeText(resultLabel.textContent).then(console.log);
+        console.log('Content copied to clipboard');
+    } catch (err) {
+        console.error('Failed to copy: ', err);
     }
 });

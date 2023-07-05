@@ -29,7 +29,7 @@ class ShortLink extends Controller
         $parsed_url = parse_url($link);
 
         if (!key_exists("host", $parsed_url)) {
-            return response()->json(["error"=> 'Bad link!!'], status: 400);
+            return response()->json(["error" => 'Bad link!!'], status: 400);
         }
 
         $variant = range('a', 'z');
@@ -52,6 +52,6 @@ class ShortLink extends Controller
         $short_link_history->short_link = (key_exists("scheme", $parsed_url) ? $parsed_url["scheme"] . "://" : '') . $parsed_url["host"] . '/' . $next_short;
         $short_link_history->save();
 
-        return response()->json();
+        return response()->json(['short' => $short_link_history->short_link]);
     }
 }

@@ -14,8 +14,8 @@
             'resources/js/app.js'
         ])
     </head>
-    <body class="antialiased">
-        <div>
+    <body>
+        <div class="container">
             <label>
                 <input id="link" name="link" placeholder="enter link...">
             </label>
@@ -24,6 +24,12 @@
                     data-token="{{ csrf_token() }}"
                     data-last-shorts="{{ route('get.last.shorts') }}"
             >Сократить</button>
+            <div class="result">
+                Ваша сокращенная ссылка:
+                <label id="result">-</label>
+                <br>
+                Нажмите что бы скопировать
+            </div>
         </div>
         <div class="last-shorts">
             @include('last-shorts')
