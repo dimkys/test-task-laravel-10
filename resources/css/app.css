@@ -1,0 +1,11 @@
+.last-shorts {
+    margin-top: 20px;
+    width: max-content;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 15px;
+}
+.links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
